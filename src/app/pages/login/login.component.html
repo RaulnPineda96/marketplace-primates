@@ -1,0 +1,175 @@
+<div  class="main-div">
+  <mat-card class="mat-elevation-z12 size_card">
+    <mat-card-title style="text-align:center;"></mat-card-title>
+    <mat-tab-group mat-stretch-tabs class="mat-tab-group.mat-primary">
+      <mat-tab label="Iniciar Sesión" class="inciarSesion">
+        <mat-card-content>
+          <!-- Formulario para el inicio de sesion -->
+          <form [formGroup]="formLogin">
+            <br>
+            <br>
+            <div class="example-container" style="text-align: center;">
+              <mat-form-field fxFlex="grow">
+                <mat-label>Email</mat-label>
+                <input class="example-tel-input-element" matInput type='email' placeholder="pat@example.com"
+                  formControlName="username" required>
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error *ngIf="control.username.errors?.required">¡El campo es obligatorio!</mat-error>
+              </mat-form-field>
+            </div>
+
+            <span class="example-tel-input-spacer">&ndash;</span>
+
+            <div class="example-container" style="text-align: center;">
+              <mat-form-field fxFlex="grow">
+                <mat-label>Contraseña</mat-label>
+                <input class="example-tel-input-element" matInput type='password' placeholder="pat@example.com"
+                  formControlName="password" required>
+                <mat-error *ngIf="control.password.errors?.required">
+                  ¡El campo es obligatorio!</mat-error>
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+            </div>
+            <span class="example-tel-input-spacer">&ndash;</span>
+
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <mat-checkbox style="padding-left: 335px;color: rgb(10,44, 62); ">Recordarme</mat-checkbox>
+            </div>
+            <span class="example-tel-input-spacer">&ndash;</span>
+            <div style="text-align: center;">
+              <button class="color_button" mat-raised-button type="button">
+                Ingresar
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-tab >
+
+      <!-- Formulario para el registro de un usuario nuevo -->
+      <mat-tab label="Registro" class="registro"> <h1></h1>
+        <mat-card-content>
+          <form [formGroup]="formRegistro">
+            <br>
+            <br>
+            <div class="example-container" style="text-align: center;">
+              <mat-form-field fxFlex="grow">
+                <mat-label>Nombre</mat-label>
+                <input class="example-tel-input-element" matInput type='text' placeholder="Juan"
+                  formControlName="nameR" required>
+                <mat-error *ngIf="controlRegistro.nameR.errors?.required">¡El campo es obligatorio!</mat-error>
+              </mat-form-field>
+
+              <span class="example-tel-input-spacer">&nbsp;</span>
+              <span class="example-tel-input-spacer">&nbsp;</span>
+
+              <mat-form-field fxFlex="grow">
+                <mat-label>Apellido</mat-label>
+                <input class="example-tel-input-element" matInput type='text' placeholder="pat@example.com"
+                  formControlName="lastName" required>
+                <mat-error *ngIf="controlRegistro.lastName.errors?.required">¡El campo es obligatorio!</mat-error>
+              </mat-form-field>
+            </div>
+
+            <span class="example-tel-input-spacer">&ndash;</span>
+
+            <div class="example-container" style="text-align: center;">
+              <mat-form-field fxFlex="grow">
+                <mat-label>Fecha nacimiento</mat-label>
+                <input matInput [matDatepicker]="startDatepicker" formControlName="fechaNacimiento" required>
+                <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDatepicker>
+                  <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancelar</button>
+                    <button mat-raised-button color="primary" matDatepickerApply>Aceptar</button>
+                  </mat-datepicker-actions>
+                </mat-datepicker>
+                <mat-error *ngIf="controlRegistro.fechaNacimiento.errors?.required">¡El campo es obligatorio!</mat-error>
+              </mat-form-field>
+
+              <span class="example-tel-input-spacer">&nbsp;;</span>
+              <span class="example-tel-input-spacer">&nbsp;;</span>
+
+              <mat-form-field>
+                <mat-label>Genero</mat-label>
+                <mat-select formControlName="genero" required>
+                  <mat-option *ngFor="let genero of generos" [value]="genero.value">
+                    {{genero.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="controlRegistro.genero.errors?.required">¡El campo es obligatorio!</mat-error>
+              </mat-form-field>
+            </div>
+            <span class="example-tel-input-spacer">&ndash;</span>
+
+            <div class="example-container" style="text-align: center;">
+              <mat-form-field fxFlex="grow">
+                <mat-label>Email</mat-label>
+                <input class="example-tel-input-element" matInput type='email' placeholder="pat@example.com"
+                  formControlName="emailR" required>
+                <mat-error *ngIf="controlRegistro.emailR.errors?.required">¡El campo es obligatorio!</mat-error>
+              </mat-form-field>
+
+              <span class="example-tel-input-spacer">&nbsp;;</span>
+              <span class="example-tel-input-spacer">&nbsp;;</span>
+
+              <mat-form-field fxFlex="grow">
+                <mat-label>N° Celular</mat-label>
+                <input class="example-tel-input-element" matInput type='text' placeholder=""
+                  formControlName="mobile" required>
+                <mat-error *ngIf="controlRegistro.mobile.errors?.required">¡El campo es obligatorio!</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="example-container" style="text-align: center;">
+              <mat-form-field fxFlex="grow">
+                <mat-label>Ciudad</mat-label>
+                <mat-select formControlName="ciudad" required>
+                  <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.value">
+                    {{ciudad.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="controlRegistro.ciudad.errors?.required">¡El campo es obligatorio!</mat-error>
+              </mat-form-field>
+
+              <span class="example-tel-input-spacer">&nbsp;;</span>
+              <span class="example-tel-input-spacer">&nbsp;;</span>
+
+              <mat-form-field fxFlex="grow">
+                <mat-label>Dirección</mat-label>
+                <input class="example-tel-input-element" matInput type='text' placeholder=""
+                  formControlName="mobile" required>
+                <mat-error *ngIf="controlRegistro.mobile.errors?.required">¡El campo es obligatorio!</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="example-container" style="text-align: center;">
+              <mat-form-field fxFlex="grow">
+                <mat-label>Contraseña</mat-label>
+                <input class="example-tel-input-element" matInput type='password' placeholder="Minimo 4 caracteres"
+                  formControlName="passwordR" required>
+                <mat-error *ngIf="controlRegistro.passwordR.errors?.required">¡El campo es obligatorio!</mat-error>
+              </mat-form-field>
+
+              <span class="example-tel-input-spacer">&nbsp;;</span>
+              <span class="example-tel-input-spacer">&nbsp;;</span>
+
+              <mat-form-field fxFlex="grow">
+                <mat-label>Confirmar contraseña</mat-label>
+                <input class="example-tel-input-element" matInput type='text' placeholder="pat@example.com"
+                  formControlName="confirmarPasswordR" required>
+                <mat-error *ngIf="controlRegistro.confirmarPasswordR.errors?.required">¡El campo es obligatorio!</mat-error>
+              </mat-form-field>
+            </div>
+
+            <span class="example-tel-input-spacer">&ndash;</span>
+            <div style="text-align: center;">
+              <button class="color_button" mat-raised-button type="button">
+                Registrar
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-tab >
+    </mat-tab-group>
+  </mat-card>
+</div>

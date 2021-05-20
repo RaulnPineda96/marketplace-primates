@@ -9,6 +9,11 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { AcercaDeComponent } from './pages/acerca-de/acerca-de.component';
 import { DetalleProductoComponent } from './pages/detalle-producto/detalle-producto.component';
+import { LoginComponent } from './pages/login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 @NgModule({
   declarations: [
@@ -18,13 +23,19 @@ import { DetalleProductoComponent } from './pages/detalle-producto/detalle-produ
     ProductosComponent,
     LayoutComponent,
     AcercaDeComponent,
-    DetalleProductoComponent
+    DetalleProductoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    MatCarouselModule.forRoot(),
   ],
-  providers: [],
+  providers: [    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

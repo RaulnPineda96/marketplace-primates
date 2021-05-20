@@ -7,7 +7,7 @@ import * as moment from 'moment';
 })
 export class FooterComponent implements OnInit {
 
- anio: any = moment(new Date().getFullYear()).format('YYYY');
+ anio: number = new Date().getFullYear();
 
   constructor() {
     console.log('la fecha:', this.anio );
